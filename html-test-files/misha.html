@@ -26,6 +26,28 @@
 
 <body>
 
+    <h1>Settings</h1> <br><br>
+
+
+    <h5>Enter any additional activities below</h5>
+
+    <label for="customAct"> Custom Activity: </label>
+    <input type="text" id="customAct" name="customAct"><br>
+
+    <button id="save" onclick="addActivity()">Save</button><br><br>
+    <p id="inputAct">Your custom activity is:</p> <br><br>
+
+
+    <p>Please select your preferred break time:</p>
+    <input type="radio" id="breakTime1" name="breakTime" value="11:30" onclick="AdjustTimer1()">
+    <label for="11:30">11:30 AM</label><br>
+    <input type="radio" id="breakTime2" name="breakTime" value="1:30" onclick="AdjustTimer2()">
+    <label for="1:30">1:30 PM</label><br>
+    <input type="radio" id="breakTime3" name="breakTime" value="3:00" onclick="AdjustTimer3()">
+    <label for="3:00">3:00 PM</label>
+
+    <p id="newTime">Your new break time is:</p> <br><br>
+
 </body>
 
 </html>
