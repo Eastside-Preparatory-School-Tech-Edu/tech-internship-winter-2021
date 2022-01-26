@@ -15,7 +15,7 @@ function GetDate() {
     } else if (hours == 12) {
         afternoon = true;
     }
-    time = ("0" + hours).slice(-2) + ":" + ("0" + currDate.getMinutes()).slice(-2) + ":" + ("0" + currDate.getSeconds()).slice(-2);
+    time = hours + ":" + ("0" + currDate.getMinutes()).slice(-2) + ":" + ("0" + currDate.getSeconds()).slice(-2);
     if (afternoon) {
         time = time += " PM"
     } else {
