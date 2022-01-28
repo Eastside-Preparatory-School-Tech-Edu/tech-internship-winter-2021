@@ -15,3 +15,10 @@ function EditActivities() {
         myList.style = "border: none;";
     }
 }
+
+function getRandActivity() {
+    let myItems = document.querySelectorAll("#activitiesList li");
+    let limit = myItems.length - 1;
+    let randNum = Math.floor((Math.random() * (limit)) + 0);
+    alert(myItems[randNum].innerText);
+}
