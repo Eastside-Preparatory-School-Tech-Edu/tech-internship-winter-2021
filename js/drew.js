@@ -3,34 +3,7 @@ let mainHours, mainMinutes, mainSeconds;
 let timerEvents = [];
 var popupModal;
 var closeButton;
-
-/* ___________ Optional OOP stuff I would like to have implemented throughout ___________ */
-
-// event class to hold events and their relevant metadata
-class timerEvent {
-    constructor(name, description, startTime, endTime) {
-        this.name = name;
-        this.description = description;
-        this.startTime = startTime;
-        this.endTime = endTime;
-    }
-}
-
-/* class to carry times easily for timerEvent class */
-class time {
-    constructor(hours, minutes, seconds) {
-        this.hours = hours;
-        this.minutes = minutes;
-        this.seconds = seconds;
-    }
-}
-
-/* create a new event with given parameters */
-function createNewEvent(name, description, startTime, endTime) {
-    timerEvents.push(new timerEvent(name, description, startTime, endTime));
-}
-
-/* _______________ Normal Stuff resumes below _____________________ */
+var breakHours, breakMinutes;
 
 /* initiate some variables BEFORE main gets going */
 function startup() {
@@ -47,8 +20,7 @@ function startup() {
 function main() {
     /* update timer */
     TimerUpdate();
-    //CheckIfEventShouldFire(mainHours, mainMinutes, mainSeconds, timerEvents);
-    crudeAlertFire();
+    CheckIfEventShouldFire();
 }
 
 /* update the main body timer */
@@ -60,21 +32,15 @@ function TimerUpdate() {
 }
 
 /* compare event timings to the time */
-function CheckIfEventShouldFire(hours, minutes, seconds, events) {
-    events.forEach(element => {
-        if (element.hours);
-    });
-}
-
-/* Temp crude version while we figure out when we want this to fire */
-function crudeAlertFire() {
-    /*
-    if (mainMinutes % 30 == 0 && seconds == 0) {
-        Popup();
-        AlertSound();
-    }*/
-    Popup();
-    AlertSound();
+function CheckIfEventShouldFire() {
+    if (breakHours == mainHours) {
+        if (breakMinutes == mainMinutes) {
+            if (mainSeconds == 0) {
+                Popup();
+                AlertSound();
+            }
+        }
+    }
 }
 
 /* Function to display the activity */
@@ -88,11 +54,10 @@ function AlertSound() {
 
 }
 
-
 //MISHA'S CODE
 // Function to change time for breaks
 function AdjustTimer() {
     fullTime = document.getElementById("breakTime").value;
-    hours = fullTime[0] + fullTime[1]
-    minutes = fullTime[3] + fullTime[4]
+    breakHours = fullTime[0] + fullTime[1]
+    breakMinutes = fullTime[3] + fullTime[4]
 }

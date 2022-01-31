@@ -92,7 +92,9 @@
         </div>
         <div class="row justify-content-md-center ">
             <div class="col-md-5 ">
-                <p>Edit timetable here</p>
+                <p>Please select a time for your break</p>
+                <input type="time" id="breakTime" name="breakTime" min="00:00" max="24:00" required>
+                <button id="save" onclick="AdjustTimer()">Save</button><br><br>
             </div>
             <div class="col-md-5">
                 <div class="row">
@@ -116,6 +118,69 @@
             </div>
         </div>
     </div>
+
+    <!-- Modal Stuff for drew -->
+    <div class="modal" id="alertModal">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p id="modalText">Some text in the Modal..</p>
+        </div>
+        <style>
+            .modal {
+                display: none;
+                /* Hidden by default */
+                position: fixed;
+                /* Stay in place */
+                z-index: 1;
+                /* Sit on top */
+                left: 0;
+                top: 0;
+                width: 100%;
+                /* Full width */
+                height: 100%;
+                /* Full height */
+                overflow: auto;
+                /* Enable scroll if needed */
+                background-color: rgb(0, 0, 0);
+                /* Fallback color */
+                background-color: rgba(0, 0, 0, 0.4);
+                /* Black w/ opacity */
+            }
+            /* Modal Content/Box */
+            
+            .modal-content {
+                background-color: #fefefe;
+                margin: 15% auto;
+                /* 15% from the top and centered */
+                padding: 20px;
+                border: 1px solid #888;
+                width: 80%;
+                /* Could be more or less, depending on screen size */
+            }
+            /* The Close Button */
+            
+            .close {
+                color: #aaa;
+                float: right;
+                font-size: 28px;
+                font-weight: bold;
+            }
+            
+            .close:hover,
+            .close:focus {
+                color: black;
+                text-decoration: none;
+                cursor: pointer;
+            }
+        </style>
+
+    </div>
+
+    <script src="js/drew.js">
+        window.onload = startup();
+        setInterval(main, 1000);
+    </script>
 </body>
 
 </html>
