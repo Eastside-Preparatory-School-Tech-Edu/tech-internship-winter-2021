@@ -45,7 +45,7 @@ function CheckIfEventShouldFire() {
 
 /* Function to display the activity */
 function Popup() {
-    document.getElementById("modalText").innerHTML = "This Text can Be changed";
+    document.getElementById("modalText").innerHTML = "TAKE A BREAK (FILLER TEXT)";
     popupModal.style.display = "block";
 }
 
