@@ -87,3 +87,12 @@ function Popup() {
 function AlertSound() {
 
 }
+
+
+//MISHA'S CODE
+// Function to change time for breaks
+function AdjustTimer() {
+    fullTime = document.getElementById("breakTime").value;
+    hours = fullTime[0] + fullTime[1]
+    minutes = fullTime[3] + fullTime[4]
+}
