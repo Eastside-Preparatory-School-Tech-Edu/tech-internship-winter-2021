@@ -1,10 +1,11 @@
+var months = [
+    "January", "February", "March", "April", "May",
+    "June", "July", "August", "September", "October",
+    "November", "December"
+];
+
 // Function to get current date
 function GetDate() {
-    var months = [
-        "January", "February", "March", "April", "May",
-        "June", "July", "August", "September", "October",
-        "November", "December"
-    ];
     let time = "";
     let currDate = new Date();
     let afternoon = false;
@@ -31,11 +32,14 @@ function GetDate() {
 function DarkModeToggle() {
     let body = document.body;
     let date = document.getElementById("DateBox");
+    let modal_obj = document.getElementById("modal-content");
     if (body.className == "light-mode") {
         body.className = "dark-mode";
+        modal_obj.className = "dark-mode";
         date.className = "light-mode";
     } else {
         body.className = "light-mode";
+        modal_obj.className = "light-mode";
         date.className = "dark-mode";
     }
 }

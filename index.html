@@ -122,7 +122,8 @@
             setInterval(GetDate, 1000);
         </script>
         <div class="jumbotron" style="background-color: black;">
-            <a href="help.html" class="nav-link"><img src="images/questionMark.png" alt="More Info" style="height: 50px;"></a>
+            <a onclick="DarkModeToggle();" class="btn btn-info"><img src="images/questionMark.png" alt="Dark Mode" style="height: 50px;"></a>
+            <!-- <a href="help.html" class="nav-link"><img src="images/questionMark.png" alt="More Info" style="height: 50px;"></a> -->
         </div>
     </nav>
     <div class="container">
@@ -166,7 +167,7 @@
     <!-- Modal Stuff for drew -->
     <div class="modal" id="alertModal">
         <!-- Modal content -->
-        <div class="modal-content">
+        <div class="light-mode" id="modal-content">
             <span class="close">&times;</span>
             <p id="modalText">Some text in the Modal..</p>
         </div>
@@ -193,8 +194,8 @@
             }
             /* Modal Content/Box */
             
-            .modal-content {
-                background-color: #fefefe;
+            #modal-content {
+                /* background-color: #fefefe; */
                 margin: 15% auto;
                 /* 15% from the top and centered */
                 padding: 20px;
