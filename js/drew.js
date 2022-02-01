@@ -1,5 +1,6 @@
 /* declare main variables */
 let mainHours, mainMinutes, mainSeconds;
+let displayText;
 let timerEvents = [];
 var popupModal;
 var closeButton;
@@ -45,7 +46,8 @@ function CheckIfEventShouldFire() {
 
 /* Function to display the activity */
 function Popup() {
-    document.getElementById("modalText").innerHTML = "TAKE A BREAK (FILLER TEXT)";
+    getRandActivity();
+    document.getElementById("modalText").innerHTML = displayText;
     popupModal.style.display = "block";
 }
 
@@ -60,4 +62,14 @@ function AdjustTimer() {
     fullTime = document.getElementById("breakTime").value;
     breakHours = fullTime[0] + fullTime[1]
     breakMinutes = fullTime[3] + fullTime[4]
+}
+
+
+//NETA'S CODE
+// Function to generate random activity from list
+function getRandActivity() {
+    let myItems = document.querySelectorAll("#activitiesList li");
+    let limit = myItems.length - 1;
+    let randNum = Math.floor((Math.random() * (limit)) + 0);
+    displayText = (myItems[randNum].innerText);
 }
