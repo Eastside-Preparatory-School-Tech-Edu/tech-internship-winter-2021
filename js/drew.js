@@ -62,6 +62,7 @@ function AdjustTimer() {
     fullTime = document.getElementById("breakTime").value;
     breakHours = fullTime[0] + fullTime[1]
     breakMinutes = fullTime[3] + fullTime[4]
+    alert("New time set: " + fullTime)
 }
 
 

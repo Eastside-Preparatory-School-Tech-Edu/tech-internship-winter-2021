@@ -92,13 +92,63 @@
         .info .show {
             visibility: visible;
         }
+        
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 48px;
+            height: 26px;
+        }
+        
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            -webkit-transition: .4s;
+            transition: .4s;
+            border-radius: 18px;
+        }
+        
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 18px;
+            width: 18px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            -webkit-transition: .4s;
+            transition: .4s;
+            border-radius: 50%;
+        }
+        
+        input:checked+.slider {
+            background-color: #333333;
+        }
+        
+        input:checked+.slider:before {
+            -webkit-transform: translateX(22px);
+            -ms-transform: translateX(22px);
+            transform: translateX(22px);
+        }
     </style>
 </head>
 
-<body>
+<body class="light-mode">
     <nav class="navbar navbar-expand-md justify-content-sm-around" style="margin-bottom: 10px;">
-        <div class="jumbotron info" style="background-color: white; padding: 0%;">
-            <div class="info" onclick="infoFunction()"><img src="images/logo.png" alt="logo" style="height:60px;">
+        <div class="light-mode" id="jumbotron info" style="padding: 0%;">
+            <div class="info">
+                <img src="images/logo.png" alt="logo" style="height:60px;">
                 <span class="infotext" id="info-popup">
                     <h3>What is ScreenAssist?</h3>
                     <p>This website is designed to provide reminders and suggestions for screen breaks to ensure optimal health and productivity. For every hour on a screen, it is recommended to take a 5 minute break (at a minimum), and it is most beneficial to get up and moving around. Prolonged screen use can lead to eye strain, fatigue, headaches, and temporary short sightedness, in addition to other possible longer term symptoms, and taking breaks using this tool can help prevent these issues.</p>
@@ -121,15 +171,18 @@
         <script>
             setInterval(GetDate, 1000);
         </script>
-        <div class="jumbotron" style="background-color: black;">
-            <a onclick="DarkModeToggle();" class="btn btn-info"><img src="images/questionMark.png" alt="Dark Mode" style="height: 50px;"></a>
-            <!-- <a href="help.html" class="nav-link"><img src="images/questionMark.png" alt="More Info" style="height: 50px;"></a> -->
+        <div class="jumbotron" style="background-color: #17A2B8;">
+            <a onclick="infoFunction()"><img src="images/questionMark.png" alt="More Info" style="height: 50px;"></a>
         </div>
     </nav>
     <div class="container">
         <div class="row justify-content-md-center ">
             <div class="col-md-5 ">
-                <p>Settings here</p>
+                <p>Light Mode
+                    <label class="switch">
+                    <input type="checkbox" onclick="DarkModeToggle();">
+                    <span class="slider"></span>
+                </label> Dark Mode</p>
             </div>
             <div class="col-md-5 ">
                 <p>Clock countdown here</p>

@@ -33,14 +33,17 @@ function DarkModeToggle() {
     let body = document.body;
     let date = document.getElementById("DateBox");
     let modal_obj = document.getElementById("modal-content");
+    let logo_back = document.getElementById("jumbotron info");
     if (body.className == "light-mode") {
         body.className = "dark-mode";
-        modal_obj.className = "dark-mode";
         date.className = "light-mode";
+        logo_back.className = "dark-mode";
+        modal_obj.className = "dark-mode";
     } else {
         body.className = "light-mode";
-        modal_obj.className = "light-mode";
         date.className = "dark-mode";
+        logo_back.className = "light-mode";
+        modal_obj.className = "light-mode";
     }
 }
 
