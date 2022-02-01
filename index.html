@@ -62,13 +62,57 @@
             background-color: white;
             color: black;
         }
+        
+        .info {
+            position: relative;
+            display: inline-block;
+            cursor: pointer;
+            background-color: white;
+            padding: 8px;
+            border-radius: 10%;
+            margin: 10px 0 0 10px;
+        }
+        
+        .popup-container {
+            width: 100%;
+        }
+        
+        .info .infotext {
+            visibility: hidden;
+            width: 1000px;
+            margin: auto;
+            background-color: rgba(82, 86, 90, 0.644);
+            color: rgb(255, 255, 255);
+            border-radius: 6px;
+            padding: 20px;
+            z-index: 1;
+            position: fixed;
+        }
+        
+        .info .show {
+            visibility: visible;
+        }
     </style>
 </head>
 
 <body>
     <nav class="navbar navbar-expand-md justify-content-sm-around" style="margin-bottom: 10px;">
-        <div class="jumbotron" style="background-color: white; padding: 0%;">
-            <a class="navbar-brand" href="index.html"><img src="images/logo.png" alt="logo" style="height:60px;"></a>
+        <div class="jumbotron info" style="background-color: white; padding: 0%;">
+            <div class="info" onclick="infoFunction()"><img src="images/logo.png" alt="logo" style="height:60px;">
+                <span class="infotext" id="info-popup">
+                    <h3>What is ScreenAssist?</h3>
+                    <p>This website is designed to provide reminders and suggestions for screen breaks to ensure optimal health and productivity. For every hour on a screen, it is recommended to take a 5 minute break (at a minimum), and it is most beneficial to get up and moving around. Prolonged screen use can lead to eye strain, fatigue, headaches, and temporary short sightedness, in addition to other possible longer term symptoms, and taking breaks using this tool can help prevent these issues.</p>
+                    <h3>How do I use ScreenAssist?</h3>
+                    <p>(can add directions once we solidify the features)</p>        
+                </span>
+            </div>
+
+            <script>
+                function infoFunction() {
+                    var popup = document.getElementById("info-popup");
+                    popup.classList.toggle("show");
+                }
+            </script>
         </div>
         <div class="dark-mode" id="DateBox">
             <h1 id="currentDate">Loading...</h1>
@@ -78,7 +122,7 @@
             setInterval(GetDate, 1000);
         </script>
         <div class="jumbotron" style="background-color: black;">
-            <a href="help.html" class="nav-link"><img src="images/questionMark.png" alt="More Info" style="height: 35px;"></a>
+            <a href="help.html" class="nav-link"><img src="images/questionMark.png" alt="More Info" style="height: 50px;"></a>
         </div>
     </nav>
     <div class="container">
