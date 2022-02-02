@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--add bootstrap here-->
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+    <!-- JS -->
+    <script src="js/neta.js"></script>
+    <script src="js/misha.js"></script>
+    <script src="js/eric.js"></script>
+    <script src="js/drew.js"></script>
+
+    <title>ScreenAssist</title>
+    <style>
+        .jumbotron {
+            padding: 5px;
+            border-radius: 10px;
+        }
+        
+        #DateBox {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            width: 72%;
+            min-height: 180px;
+            white-space: pre;
+            border-radius: 36px;
+            position: static;
+            margin-top: 12px;
+            white-space: pre;
+            text-align: center;
+        }
+        
+        #DateBox h1 {
+            font-size: xxx-large;
+        }
+        
+        #DateBox h2 {
+            font-size: x-large;
+        }
+        
+        .dark-mode {
+            background-color: black;
+            color: white;
+        }
+        
+        .light-mode {
+            background-color: white;
+            color: black;
+        }
+        
+        .info {
+            position: relative;
+            display: inline-block;
+            cursor: pointer;
+            background-color: white;
+            padding: 8px;
+            border-radius: 10%;
+            margin: 10px 0 0 10px;
+        }
+        
+        .popup-container {
+            width: 100%;
+        }
+        
+        .info .infotext {
+            visibility: hidden;
+            width: 1000px;
+            margin: auto;
+            background-color: rgba(82, 86, 90, 0.644);
+            color: rgb(255, 255, 255);
+            border-radius: 6px;
+            padding: 20px;
+            z-index: 1;
+            position: fixed;
+        }
+        
+        .info .show {
+            visibility: visible;
+        }
+        
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 48px;
+            height: 26px;
+        }
+        
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            -webkit-transition: .4s;
+            transition: .4s;
+            border-radius: 18px;
+        }
+        
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 18px;
+            width: 18px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            -webkit-transition: .4s;
+            transition: .4s;
+            border-radius: 50%;
+        }
+        
+        input:checked+.slider {
+            background-color: #333333;
+        }
+        
+        input:checked+.slider:before {
+            -webkit-transform: translateX(22px);
+            -ms-transform: translateX(22px);
+            transform: translateX(22px);
+        }
+    </style>
+</head>
+
+<body class="light-mode">
+    <nav class="navbar navbar-expand-md justify-content-sm-around" style="margin-bottom: 10px;">
+        <div class="light-mode" id="jumbotron info" style="padding: 0%;">
+            <div class="info">
+                <img src="images/logo.png" alt="logo" style="height:60px;">
+                <span class="infotext" id="info-popup">
+                    <h3>What is ScreenAssist?</h3>
+                    <p>This website is designed to provide reminders and suggestions for screen breaks to ensure optimal health and productivity. For every hour on a screen, it is recommended to take a 5 minute break (at a minimum), and it is most beneficial to get up and moving around. Prolonged screen use can lead to eye strain, fatigue, headaches, and temporary short sightedness, in addition to other possible longer term symptoms, and taking breaks using this tool can help prevent these issues.</p>
+                    <h3>How do I use ScreenAssist?</h3>
+                    <p>(can add directions once we solidify the features)</p>        
+                </span>
+            </div>
+
+            <script>
+                function infoFunction() {
+                    var popup = document.getElementById("info-popup");
+                    popup.classList.toggle("show");
+                }
+            </script>
+        </div>
+        <div class="dark-mode" id="DateBox">
+            <h1 id="currentDate">Loading...</h1>
+            <h2 id="currentTime">Loading...</h2>
+        </div>
+        <script>
+            setInterval(GetDate, 1000);
+        </script>
+        <div class="jumbotron" style="background-color: #17A2B8;">
+            <a onclick="infoFunction()"><img src="images/questionMark.png" alt="More Info" style="height: 50px;"></a>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="row justify-content-md-center ">
+            <div class="col-md-5 ">
+                <p>Light Mode
+                    <label class="switch">
+                    <input type="checkbox" onclick="DarkModeToggle();">
+                    <span class="slider"></span>
+                </label> Dark Mode</p>
+            </div>
+            <div class="col-md-5 ">
+                <p>Clock countdown here</p>
+            </div>
+        </div>
+        <div class="row justify-content-md-center ">
+            <div class="col-md-5 ">
+                <p>Please select a time for your break</p>
+                <input type="time" id="breakTime" name="breakTime" min="00:00" max="24:00" required>
+                <button id="save" onclick="AdjustTimer()">Save</button><br><br>
+            </div>
+            <div class="col-md-5">
+                <div class="row">
+                    <div class="col-md-5">
+                        <h3>Activities:</h3>
+                    </div>
+                    <div class="col-md-3">
+                        <button id="editButton" onclick="EditActivities();" type="button" class="btn btn-info">
+                            <img id="icon" src="images/editIcon.png" alt="Edit">
+                        </button>
+                    </div>
+                </div>
+                <div class="row">
+                    <ol id="activitiesList" contenteditable="false" style="border: none;">
+                        <li>Read a book</li>
+                        <li>Solve a Rubiks cube</li>
+                        <li>Eat a snack</li>
+                        <li>Stand up</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Stuff for drew -->
+    <div class="modal" id="alertModal">
+        <!-- Modal content -->
+        <div class="light-mode" id="modal-content">
+            <span class="close">&times;</span>
+            <p id="modalText">Some text in the Modal..</p>
+        </div>
+        <style>
+            .modal {
+                display: none;
+                /* Hidden by default */
+                position: fixed;
+                /* Stay in place */
+                z-index: 1;
+                /* Sit on top */
+                left: 0;
+                top: 0;
+                width: 100%;
+                /* Full width */
+                height: 100%;
+                /* Full height */
+                overflow: auto;
+                /* Enable scroll if needed */
+                background-color: rgb(0, 0, 0);
+                /* Fallback color */
+                background-color: rgba(0, 0, 0, 0.4);
+                /* Black w/ opacity */
+            }
+            /* Modal Content/Box */
+            
+            #modal-content {
+                /* background-color: #fefefe; */
+                margin: 15% auto;
+                /* 15% from the top and centered */
+                padding: 20px;
+                border: 1px solid #888;
+                width: 80%;
+                /* Could be more or less, depending on screen size */
+            }
+            /* The Close Button */
+            
+            .close {
+                color: #aaa;
+                float: right;
+                font-size: 28px;
+                font-weight: bold;
+            }
+            
+            .close:hover,
+            .close:focus {
+                color: black;
+                text-decoration: none;
+                cursor: pointer;
+            }
+        </style>
+
+    </div>
+
+    <script>
+        window.onload = startup();
+        setInterval(main, 1000);
+    </script>
+</body>
+
+</html>
