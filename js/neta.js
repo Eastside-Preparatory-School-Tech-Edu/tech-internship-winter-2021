@@ -1,24 +1,42 @@
 // function to edit activity list
 function EditActivities() {
     let myIcon = document.getElementById("icon");
-    let myList = document.getElementById("activitiesList");
-    if (myList.contentEditable == "false") {
+    let per1 = document.getElementById("p1");
+    let per2 = document.getElementById("p2");
+    let per3 = document.getElementById("p3");
+    let per4 = document.getElementById("p4");
+    if (per1.contentEditable == "false") {
         icon.src = "images/doneIcon.png";
         icon.alt = "Save";
-        myList.contentEditable = "true";
-        myList.style = "border: dotted 1px black;";
+        per1.contentEditable = "true";
+        per2.contentEditable = "true";
+        per3.contentEditable = "true";
+        per4.contentEditable = "true";
+        per1.style = "border: dotted 1px black;";
+        per2.style = "border: dotted 1px black;";
+        per3.style = "border: dotted 1px black;";
+        per4.style = "border: dotted 1px black;";
     } else {
         icon.src = "images/editIcon.png";
         icon.alt = "Edit";
-        myList.contentEditable = "false";
+        per1.contentEditable = "false";
+        per2.contentEditable = "false";
+        per3.contentEditable = "false";
+        per4.contentEditable = "false";
         alert("Edits saved!");
-        myList.style = "border: none;";
+        per1.style = "border: none;";
+        per2.style = "border: none;";
+        per3.style = "border: none;";
+        per4.style = "border: none;";
     }
 }
 
 function getRandActivity() {
-    let myItems = document.querySelectorAll("#activitiesList li");
+    let myItems = document.querySelectorAll("#activitiesList dd");
+    if (myItems.length === 0) {
+        displayText = ("Go jump up and down and brainstorm items to add to the list");
+    }
     let limit = myItems.length - 1;
     let randNum = Math.floor((Math.random() * (limit)) + 0);
-    alert(myItems[randNum].innerText);
+    displayText = (myItems[randNum].innerText);
 }

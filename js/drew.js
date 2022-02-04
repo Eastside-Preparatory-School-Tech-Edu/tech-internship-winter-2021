@@ -69,11 +69,15 @@ function AdjustTimer() {
 //NETA'S CODE
 // Function to generate random activity from list
 function getRandActivity() {
-    let myItems = document.querySelectorAll("#activitiesList li");
-    if (myItems.length === 0) {
-        displayText = ("Go jump up and down and brainstorm items to add to the list");
+    let myItems = document.querySelectorAll("#activitiesList dd");
+    for (let i = 0; i < 4; i++) {
+        if ( //time == that of period 1){
+            if (myItems[i].innerText != "") {
+                displayText = (myItems[i].innerText);
+            } else {
+                displayText = ("Go jump up and down and brainstorm items to add to this period");
+            }
+        }
+        //other ifs for other periods
     }
-    let limit = myItems.length - 1;
-    let randNum = Math.floor((Math.random() * (limit)) + 0);
-    displayText = (myItems[randNum].innerText);
 }
