@@ -5,6 +5,9 @@ let timerEvents = [];
 var popupModal;
 var closeButton;
 var breakHours, breakMinutes;
+// hardcoded times to check for period announcements (24h time)
+let hourToTrigger = [8, 9, 12, 13];
+let minToTrigger = [30, 55, 25, 50];
 
 /* initiate some variables BEFORE main gets going */
 function startup() {
@@ -37,16 +40,28 @@ function CheckIfEventShouldFire() {
     if (breakHours == mainHours) {
         if (breakMinutes == mainMinutes) {
             if (mainSeconds == 0) {
-                Popup();
+                Popup(5);
                 AlertSound();
+            }
+        }
+    }
+    // iterate through hardcoded times
+    for (i = 0; i < 4; i++) {
+        if (mainHours == hourToTrigger[i]) {
+            if (mainMinutes == minToTrigger[i]) {
+                if (mainSeconds == 0) {
+                    // pass the block
+                    Popup(i);
+                    AlertSound();
+                }
             }
         }
     }
 }
 
 /* Function to display the activity */
-function Popup() {
-    getRandActivity();
+function Popup(block) {
+    getBlockActivity(block);
     document.getElementById("modalText").innerHTML = displayText;
     popupModal.style.display = "block";
 }
@@ -68,16 +83,22 @@ function AdjustTimer() {
 
 //NETA'S CODE
 // Function to generate random activity from list
-function getRandActivity() {
+// drew has done substantial edits here
+function getBlockActivity(periodText) {
     let myItems = document.querySelectorAll("#activitiesList dd");
-    for (let i = 0; i < 4; i++) {
-        if ( //time == that of period 1){
-            if (myItems[i].innerText != "") {
-                displayText = (myItems[i].innerText);
-            } else {
-                displayText = ("Go jump up and down and brainstorm items to add to this period");
-            }
+    // no need to check what event fires, has already been done (in var periodText)
+    try {
+        // try catch so when five is passed there is no error
+        if (myItems[periodText].innerText != "") {
+            displayText = (myItems[i].innerText);
+        } else {
+            displayText = ("Go jump up and down and brainstorm items to add to this period");
         }
-        //other ifs for other periods
+    } catch (error) {
+        // message to be displayed when a break time is set
+        if (periodText == 5) {
+            displayText = "Take a break!";
+        }
     }
+    //other ifs for other periods
 }
