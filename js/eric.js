@@ -34,16 +34,19 @@ function DarkModeToggle() {
     let date = document.getElementById("DateBox");
     let modal_obj = document.getElementById("modal-content");
     let logo_back = document.getElementById("jumbotron info");
+    let question_back = document.getElementsByClassName("jumbotron justify-content-around");
     if (body.className == "light-mode") {
         body.className = "dark-mode";
         date.className = "light-mode";
         logo_back.className = "dark-mode";
         modal_obj.className = "dark-mode";
+        question_back[0].style.background = 'black';
     } else {
         body.className = "light-mode";
         date.className = "dark-mode";
         logo_back.className = "light-mode";
         modal_obj.className = "light-mode";
+        question_back[0].style.background = 'white';
     }
 }
 
