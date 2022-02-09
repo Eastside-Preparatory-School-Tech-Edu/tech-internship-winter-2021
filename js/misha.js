@@ -7,11 +7,13 @@ function SwitchAlertMode() {
 // Function to change time for breaks
 function AdjustTimer() {
     fullTime = document.getElementById("breakTime").value;
-    hours = fullTime[0] + fullTime[1]
-    minutes = fullTime[3] + fullTime[4]
+    minutes = document.getElementById("minute-selector").value;
+    seconds = document.getElementById("second-selector").value;
+    //hours = fullTime[0] + fullTime[1]
+    //minutes = fullTime[3] + fullTime[4]
     document.getElementById("breakOutput").innerHTML = "Your break time is: " + fullTime;
-    document.getElementById("breakHours").innerHTML = "Hour: " + hours;
-    document.getElementById("breakMinutes").innerHTML = "Minutes: " + minutes;
+    document.getElementById("breakHours").innerHTML = "Hour: " + minutes;
+    document.getElementById("breakMinutes").innerHTML = "Minutes: " + seconds;
 }
 
 

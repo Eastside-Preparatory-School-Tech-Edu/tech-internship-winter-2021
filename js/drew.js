@@ -5,6 +5,7 @@ let timerEvents = [];
 var popupModal;
 var closeButton;
 var breakHours, breakMinutes;
+breakSeconds
 // hardcoded times to check for period announcements (24h time)
 let hourToTrigger = [8, 9, 12, 13];
 let minToTrigger = [30, 55, 25, 50];
@@ -39,7 +40,7 @@ function TimerUpdate() {
 function CheckIfEventShouldFire() {
     if (breakHours == mainHours) {
         if (breakMinutes == mainMinutes) {
-            if (mainSeconds == 0) {
+            if (breakSeconds == mainSeconds) {
                 Popup(5);
                 AlertSound();
             }
@@ -74,10 +75,61 @@ function AlertSound() {
 //MISHA'S CODE
 // Function to change time for breaks
 function AdjustTimer() {
-    fullTime = document.getElementById("breakTime").value;
-    breakHours = fullTime[0] + fullTime[1]
-    breakMinutes = fullTime[3] + fullTime[4]
-    alert("New time set: " + fullTime)
+    breakMinutes = document.getElementById("minute-selector").value;
+    breakSeconds = document.getElementById("second-selector").value;
+    if (document.getElementById("Block1").checked) {
+        breakHours = 9;
+        breakMinutes = 40 - document.getElementById("minute-selector").value;
+        if (document.getElementById("second-selector").value == 0) {
+            breakSeconds = 00;
+        } else {
+            breakSeconds = 60 - document.getElementById("second-selector").value;
+        }
+    }
+    if (document.getElementById("Block2").checked) {
+        if (breakMinutes > 5) {
+            breakMinutes = 65 - document.getElementById("minute-selector").value;
+            if (document.getElementById("second-selector").value == 0) {
+                breakSeconds = 00;
+            } else {
+                breakSeconds = 60 - document.getElementById("second-selector").value;
+            }
+            breakHours = 10;
+        } else {
+            breakMinutes = 5 - document.getElementById("minute-selector").value;
+            if (document.getElementById("second-selector").value == 0) {
+                breakSeconds = 00;
+            } else {
+                breakSeconds = 60 - document.getElementById("second-selector").value;
+            }
+            breakHours = 11;
+        }
+    }
+    if (document.getElementById("Block3").checked) {
+        breakHours = 13;
+        breakMinutes = 35 - document.getElementById("minute-selector").value;
+        if (document.getElementById("second-selector").value == 0) {
+            breakSeconds = 00;
+        } else {
+            breakSeconds = 60 - document.getElementById("second-selector").value;
+        }
+    }
+    if (document.getElementById("Block4").checked) {
+        if (breakMinutes == 0 && breakSeconds == 0) {
+            breakMinutes = document.getElementById("minute-selector").value;
+            breakSeconds = 00;
+            breakHours = 15;
+        } else {
+            breakMinutes = 59 - document.getElementById("minute-selector").value;
+            if (document.getElementById("second-selector").value == 0) {
+                breakSeconds = 00;
+            } else {
+                breakSeconds = 60 - document.getElementById("second-selector").value;
+            }
+            breakHours = 14;
+        }
+    }
+    alert("New time set: " + breakHours + ":" + breakMinutes + ":" + breakSeconds)
 }
 
 
