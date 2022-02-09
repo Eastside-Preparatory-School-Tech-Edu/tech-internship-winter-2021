@@ -8,12 +8,19 @@ var breakHours, breakMinutes;
 // hardcoded times to check for period announcements (24h time)
 let hourToTrigger = [8, 9, 12, 13];
 let minToTrigger = [30, 55, 25, 50];
+var bellSound = new Audio('Sounds/bellsound.wav');
+var checkBoxStates = [];
 
 /* initiate some variables BEFORE main gets going */
 function startup() {
     console.log("working");
     popupModal = document.getElementById("alertModal");
     closeButton = document.getElementsByClassName("close")[0];
+    // add the checkbox states
+    checkBoxStates.push(document.getElementById("checkbox1"));
+    checkBoxStates.push(document.getElementById("checkbox2"));
+    checkBoxStates.push(document.getElementById("checkbox3"));
+    checkBoxStates.push(document.getElementById("checkbox4"));
     // close function for modal
     closeButton.onclick = function() {
         popupModal.style.display = "none";
@@ -49,7 +56,7 @@ function CheckIfEventShouldFire() {
     for (i = 0; i < 4; i++) {
         if (mainHours == hourToTrigger[i]) {
             if (mainMinutes == minToTrigger[i]) {
-                if (mainSeconds == 0) {
+                if (mainSeconds == 0 && checkBoxStates[i].checked == true) {
                     // pass the block
                     Popup(i);
                     AlertSound();
@@ -68,7 +75,7 @@ function Popup(block) {
 
 /* Function to play the sound */
 function AlertSound() {
-
+    bellSound.play();
 }
 
 //MISHA'S CODE
