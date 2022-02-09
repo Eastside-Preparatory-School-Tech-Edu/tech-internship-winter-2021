@@ -5,6 +5,10 @@ let timerEvents = [];
 var popupModal;
 var closeButton;
 var breakHours, breakMinutes;
+breakSeconds
+// hardcoded times to check for period announcements (24h time)
+let hourToTrigger = [8, 9, 12, 13];
+let minToTrigger = [30, 55, 25, 50];
 
 /* initiate some variables BEFORE main gets going */
 function startup() {
@@ -36,17 +40,29 @@ function TimerUpdate() {
 function CheckIfEventShouldFire() {
     if (breakHours == mainHours) {
         if (breakMinutes == mainMinutes) {
-            if (mainSeconds == 0) {
-                Popup();
+            if (breakSeconds == mainSeconds) {
+                Popup(5);
                 AlertSound();
+            }
+        }
+    }
+    // iterate through hardcoded times
+    for (i = 0; i < 4; i++) {
+        if (mainHours == hourToTrigger[i]) {
+            if (mainMinutes == minToTrigger[i]) {
+                if (mainSeconds == 0) {
+                    // pass the block
+                    Popup(i);
+                    AlertSound();
+                }
             }
         }
     }
 }
 
 /* Function to display the activity */
-function Popup() {
-    getRandActivity();
+function Popup(block) {
+    getBlockActivity(block);
     document.getElementById("modalText").innerHTML = displayText;
     popupModal.style.display = "block";
 }
@@ -59,25 +75,82 @@ function AlertSound() {
 //MISHA'S CODE
 // Function to change time for breaks
 function AdjustTimer() {
-    fullTime = document.getElementById("breakTime").value;
-    breakHours = fullTime[0] + fullTime[1]
-    breakMinutes = fullTime[3] + fullTime[4]
-    alert("New time set: " + fullTime)
+    breakMinutes = document.getElementById("minute-selector").value;
+    breakSeconds = document.getElementById("second-selector").value;
+    if (document.getElementById("Block1").checked) {
+        breakHours = 9;
+        breakMinutes = 40 - document.getElementById("minute-selector").value;
+        if (document.getElementById("second-selector").value == 0) {
+            breakSeconds = 00;
+        } else {
+            breakSeconds = 60 - document.getElementById("second-selector").value;
+        }
+    }
+    if (document.getElementById("Block2").checked) {
+        if (breakMinutes > 5) {
+            breakMinutes = 65 - document.getElementById("minute-selector").value;
+            if (document.getElementById("second-selector").value == 0) {
+                breakSeconds = 00;
+            } else {
+                breakSeconds = 60 - document.getElementById("second-selector").value;
+            }
+            breakHours = 10;
+        } else {
+            breakMinutes = 5 - document.getElementById("minute-selector").value;
+            if (document.getElementById("second-selector").value == 0) {
+                breakSeconds = 00;
+            } else {
+                breakSeconds = 60 - document.getElementById("second-selector").value;
+            }
+            breakHours = 11;
+        }
+    }
+    if (document.getElementById("Block3").checked) {
+        breakHours = 13;
+        breakMinutes = 35 - document.getElementById("minute-selector").value;
+        if (document.getElementById("second-selector").value == 0) {
+            breakSeconds = 00;
+        } else {
+            breakSeconds = 60 - document.getElementById("second-selector").value;
+        }
+    }
+    if (document.getElementById("Block4").checked) {
+        if (breakMinutes == 0 && breakSeconds == 0) {
+            breakMinutes = document.getElementById("minute-selector").value;
+            breakSeconds = 00;
+            breakHours = 15;
+        } else {
+            breakMinutes = 59 - document.getElementById("minute-selector").value;
+            if (document.getElementById("second-selector").value == 0) {
+                breakSeconds = 00;
+            } else {
+                breakSeconds = 60 - document.getElementById("second-selector").value;
+            }
+            breakHours = 14;
+        }
+    }
+    alert("New time set: " + breakHours + ":" + breakMinutes + ":" + breakSeconds)
 }
 
 
 //NETA'S CODE
 // Function to generate random activity from list
-function getRandActivity() {
+// drew has done substantial edits here
+function getBlockActivity(periodText) {
     let myItems = document.querySelectorAll("#activitiesList dd");
-    for (let i = 0; i < 4; i++) {
-        if ( //time == that of period 1){
-            if (myItems[i].innerText != "") {
-                displayText = (myItems[i].innerText);
-            } else {
-                displayText = ("Go jump up and down and brainstorm items to add to this period");
-            }
+    // no need to check what event fires, has already been done (in var periodText)
+    try {
+        // try catch so when five is passed there is no error
+        if (myItems[periodText].innerText != "") {
+            displayText = (myItems[i].innerText);
+        } else {
+            displayText = ("Go jump up and down and brainstorm items to add to this period");
         }
-        //other ifs for other periods
+    } catch (error) {
+        // message to be displayed when a break time is set
+        if (periodText == 5) {
+            displayText = "Take a break!";
+        }
     }
+    //other ifs for other periods
 }

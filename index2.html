@@ -29,6 +29,17 @@
         .jumbotron {
             padding: 5px;
             border-radius: 10px;
+            background-color: #17A2B8;
+        }
+        
+        .jumbotron:hover {
+            cursor: pointer;
+            background-color: #288897;
+            transition: 0.3s;
+        }
+        
+        #logo:hover {
+            cursor: default
         }
         
         #DateBox {
@@ -53,6 +64,11 @@
             font-size: x-large;
         }
         
+        #DateBox:hover {
+            transform: scale(1.05);
+            transition: 0.3s;
+        }
+        
         .dark-mode {
             background-color: black;
             color: white;
@@ -67,7 +83,7 @@
             position: relative;
             display: inline-block;
             cursor: pointer;
-            background-color: white;
+            /* background-color: white; */
             padding: 8px;
             border-radius: 10%;
             margin: 10px 0 0 10px;
@@ -81,7 +97,7 @@
             visibility: hidden;
             width: 1000px;
             margin: auto;
-            background-color: rgba(82, 86, 90, 0.644);
+            background-color: rgba(82, 86, 90, 0.8);
             color: rgb(255, 255, 255);
             border-radius: 6px;
             padding: 20px;
@@ -147,7 +163,7 @@
         }
         
         .schedule-row {
-            background-color: #abdbe2;
+            background-color: #17A2B8;
             padding: 15px;
             text-align: center;
             border-radius: 15px;
@@ -204,8 +220,105 @@
         </div>
         <div class="row justify-content-md-center ">
             <div class="col-md-5 ">
-                <p>Please select a time for your break</p>
-                <input type="time" id="breakTime" name="breakTime" min="00:00" max="24:00" required>
+                <p>Select a time for your notification:</p>
+                <select name="minuteSel" id="minute-selector">
+                    <option value="">--Minutes--</option>
+                    <option value="0">00</option>
+                    <option value="1">01</option>
+                    <option value="2">02</option>
+                    <option value="3">03</option>
+                    <option value="4">04</option>
+                    <option value="5">05</option>
+                    <option value="6">06</option>
+                    <option value="7">07</option>
+                    <option value="8">08</option>
+                    <option value="9">09</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                    <option value="13">13</option>
+                    <option value="14">14</option>
+                    <option value="15">15</option>
+                    <option value="16">16</option>
+                    <option value="17">17</option>
+                    <option value="18">18</option>
+                    <option value="19">19</option>
+                    <option value="20">20</option>
+                    <option value="21">21</option>
+                    <option value="22">22</option>
+                    <option value="23">23</option>
+                    <option value="24">24</option>
+                    <option value="25">25</option>
+                    <option value="26">26</option>
+                    <option value="27">27</option>
+                    <option value="28">28</option>
+                    <option value="29">29</option>
+                    <option value="30">30</option>
+                </select>
+
+                <select name="secondSel" id="second-selector">
+                    <option value="">--Seconds--</option>
+                    <option value="0">00</option>
+                    <option value="1">01</option>
+                    <option value="2">02</option>
+                    <option value="3">03</option>
+                    <option value="4">04</option>
+                    <option value="5">05</option>
+                    <option value="6">06</option>
+                    <option value="7">07</option>
+                    <option value="8">08</option>
+                    <option value="9">09</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                    <option value="13">13</option>
+                    <option value="14">14</option>
+                    <option value="15">15</option>
+                    <option value="16">16</option>
+                    <option value="17">17</option>
+                    <option value="18">18</option>
+                    <option value="19">19</option>
+                    <option value="20">20</option>
+                    <option value="21">21</option>
+                    <option value="22">22</option>
+                    <option value="23">23</option>
+                    <option value="24">24</option>
+                    <option value="25">25</option>
+                    <option value="26">26</option>
+                    <option value="27">27</option>
+                    <option value="28">28</option>
+                    <option value="29">29</option>
+                    <option value="30">30</option>
+                    <option value="31">31</option>
+                    <option value="32">32</option>
+                    <option value="33">33</option>
+                    <option value="34">34</option>
+                    <option value="35">35</option>
+                    <option value="36">36</option>
+                    <option value="37">37</option>
+                    <option value="38">38</option>
+                    <option value="39">39</option>
+                    <option value="40">40</option>
+                    <option value="41">41</option>
+                    <option value="42">42</option>
+                    <option value="43">43</option>
+                    <option value="44">44</option>
+                    <option value="45">45</option>
+                    <option value="46">46</option>
+                    <option value="47">47</option>
+                    <option value="48">48</option>
+                    <option value="49">49</option>
+                    <option value="50">50</option>
+                    <option value="51">51</option>
+                    <option value="52">52</option>
+                    <option value="53">53</option>
+                    <option value="54">54</option>
+                    <option value="55">55</option>
+                    <option value="56">56</option>
+                    <option value="57">57</option>
+                    <option value="58">58</option>
+                    <option value="59">59</option>
+                </select>
                 <button id="save" onclick="AdjustTimer()">Save</button><br><br>
             </div>
             <div class="col-md-5">
@@ -230,10 +343,10 @@
                     <dd class="col-sm-9" id="p4" contenteditable="false">Stand up</dd>
                 </dl>
                 <div class="schedule">
-                    <p class="schedule-row"><input type="checkbox"> Block 1 (8:30-9:40)</p>
-                    <p class="schedule-row"><input type="checkbox"> Block 2 (9:55-11:05)</p>
-                    <p class="schedule-row"><input type="checkbox"> Block 3 (12:25-1:35)</p>
-                    <p class="schedule-row"><input type="checkbox"> Block 4 (1:50-3:00)</p>
+                    <p class="schedule-row"><input type="checkbox" id="Block1"> Block 1 (8:30 am - 9:40 am)</p>
+                    <p class="schedule-row"><input type="checkbox" id="Block2"> Block 2 (9:55 am - 11:05 am)</p>
+                    <p class="schedule-row"><input type="checkbox" id="Block3"> Block 3 (12:25 pm - 1:35 pm)</p>
+                    <p class="schedule-row"><input type="checkbox" id="Block4"> Block 4 (1:50 pm - 3:00 pm)</p>
                 </div>
             </div>
         </div>
