@@ -31,16 +31,16 @@
             border-radius: 10px;
             background-color: white;
         }
-        
+
         .jumbotron:hover {
             cursor: pointer;
             transition: 0.3s;
         }
-        
+
         #logo:hover {
             cursor: default
         }
-        
+
         #DateBox {
             display: flex;
             justify-content: center;
@@ -54,30 +54,30 @@
             white-space: pre;
             text-align: center;
         }
-        
+
         #DateBox h1 {
             font-size: xxx-large;
         }
-        
+
         #DateBox h2 {
             font-size: x-large;
         }
-        
+
         #DateBox:hover {
             transform: scale(1.05);
             transition: 0.3s;
         }
-        
+
         .dark-mode {
             background-color: black;
             color: white;
         }
-        
+
         .light-mode {
             background-color: white;
             color: black;
         }
-        
+
         .info {
             position: relative;
             display: inline-block;
@@ -87,11 +87,11 @@
             border-radius: 10%;
             margin: 10px 0 0 10px;
         }
-        
+
         .popup-container {
             width: 100%;
         }
-        
+
         .info .infotext {
             visibility: hidden;
             width: 1000px;
@@ -103,24 +103,24 @@
             z-index: 1;
             position: fixed;
         }
-        
+
         .info .show {
             visibility: visible;
         }
-        
+
         .switch {
             position: relative;
             display: inline-block;
             width: 48px;
             height: 26px;
         }
-        
+
         .switch input {
             opacity: 0;
             width: 0;
             height: 0;
         }
-        
+
         .slider {
             position: absolute;
             cursor: pointer;
@@ -133,7 +133,7 @@
             transition: .4s;
             border-radius: 18px;
         }
-        
+
         .slider:before {
             position: absolute;
             content: "";
@@ -146,21 +146,21 @@
             transition: .4s;
             border-radius: 50%;
         }
-        
+
         input:checked+.slider {
             background-color: #333333;
         }
-        
+
         input:checked+.slider:before {
             -webkit-transform: translateX(22px);
             -ms-transform: translateX(22px);
             transform: translateX(22px);
         }
-        
+
         .schedule {
             width: 250px;
         }
-        
+
         .schedule-row {
             background-color: #17A2B8;
             padding: 15px;
@@ -181,7 +181,7 @@
                     <h3>What is ScreenAssist?</h3>
                     <p>This website is designed to provide reminders and suggestions for screen breaks to ensure optimal health and productivity. For every hour on a screen, it is recommended to take a 5 minute break (at a minimum), and it is most beneficial to get up and moving around. Prolonged screen use can lead to eye strain, fatigue, headaches, and temporary short sightedness, in addition to other possible longer term symptoms, and taking breaks using this tool can help prevent these issues.</p>
                     <h3>How do I use ScreenAssist?</h3>
-                    <p>(can add directions once we solidify the features)</p>        
+                    <p>(can add directions once we solidify the features)</p>
                 </span>
                 </div>
 
@@ -342,10 +342,10 @@
                     <dd class="col-sm-9" id="p4" contenteditable="false">Stand up</dd>
                 </dl>
                 <div class="schedule">
-                    <p class="schedule-row"><input type="checkbox" id="Block1"> Block 1 (8:30 am - 9:40 am)</p>
-                    <p class="schedule-row"><input type="checkbox" id="Block2"> Block 2 (9:55 am - 11:05 am)</p>
-                    <p class="schedule-row"><input type="checkbox" id="Block3"> Block 3 (12:25 pm - 1:35 pm)</p>
-                    <p class="schedule-row"><input type="checkbox" id="Block4"> Block 4 (1:50 pm - 3:00 pm)</p>
+                    <p class="schedule-row"><input type="checkbox" id="checkbox1"> Block 1 (8:30 am - 9:40 am)</p>
+                    <p class="schedule-row"><input type="checkbox" id="checkbox2"> Block 2 (9:55 am - 11:05 am)</p>
+                    <p class="schedule-row"><input type="checkbox" id="checkbox3"> Block 3 (12:25 pm - 1:35 pm)</p>
+                    <p class="schedule-row"><input type="checkbox" id="checkbox4"> Block 4 (1:50 pm - 3:00 pm)</p>
                 </div>
             </div>
         </div>
@@ -380,7 +380,7 @@
                 /* Black w/ opacity */
             }
             /* Modal Content/Box */
-            
+
             #modal-content {
                 /* background-color: #fefefe; */
                 margin: 15% auto;
@@ -391,7 +391,7 @@
                 /* Could be more or less, depending on screen size */
             }
             /* The Close Button */
-            
+
             .close {
                 color: #aaa;
                 float: right;
@@ -408,7 +408,6 @@
         </style>
 
     </div>
-
     <script>
         window.onload = startup();
         setInterval(main, 1000);
