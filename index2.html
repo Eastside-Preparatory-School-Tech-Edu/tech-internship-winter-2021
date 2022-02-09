@@ -29,12 +29,11 @@
         .jumbotron {
             padding: 5px;
             border-radius: 10px;
-            background-color: #17A2B8;
+            background-color: white;
         }
         
         .jumbotron:hover {
             cursor: pointer;
-            background-color: #288897;
             transition: 0.3s;
         }
         
@@ -193,14 +192,14 @@
                     }
                 </script>
             </div>
-            <div class="dark-mode" id="DateBox">
+            <div class="dark-mode" id="DateBox" style="margin:auto">
                 <h1 id="currentDate">Loading...</h1>
                 <h2 id="currentTime">Loading...</h2>
             </div>
             <script>
                 setInterval(GetDate, 1000);
             </script>
-            <div class="jumbotron" style="background-color: #17A2B8;">
+            <div class="jumbotron justify-content-around" style="background-color: none; max-width: 70px;">
                 <a onclick="infoFunction()"><img src="images/questionMark.png" alt="More Info" style="height: 50px;"></a>
             </div>
         </div>
@@ -220,7 +219,7 @@
         </div>
         <div class="row justify-content-md-center ">
             <div class="col-md-5 ">
-                <p>Select a time for your notification:</p>
+                <p>Select how much time before the end of class you want to recieve a notification:</p>
                 <select name="minuteSel" id="minute-selector">
                     <option value="">--Minutes--</option>
                     <option value="0">00</option>
