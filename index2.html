@@ -29,6 +29,17 @@
         .jumbotron {
             padding: 5px;
             border-radius: 10px;
+            background-color: #17A2B8;
+        }
+        
+        .jumbotron:hover {
+            cursor: pointer;
+            background-color: #288897;
+            transition: 0.3s;
+        }
+        
+        #logo:hover {
+            cursor: default
         }
         
         #DateBox {
@@ -51,6 +62,11 @@
         
         #DateBox h2 {
             font-size: x-large;
+        }
+        
+        #DateBox:hover {
+            transform: scale(1.05);
+            transition: 0.3s;
         }
         
         .dark-mode {
@@ -81,7 +97,7 @@
             visibility: hidden;
             width: 1000px;
             margin: auto;
-            background-color: rgba(82, 86, 90, 0.644);
+            background-color: rgba(82, 86, 90, 0.8);
             color: rgb(255, 255, 255);
             border-radius: 6px;
             padding: 20px;
@@ -159,7 +175,7 @@
     <nav class="navbar navbar-expand-md justify-content-sm-around" style="margin-bottom: 10px;">
         <div class="light-mode" id="jumbotron info" style="padding: 0%;">
             <div class="info">
-                <img src="images/logo.png" alt="logo" style="height:120px;">
+                <img src="images/logo.png" alt="logo" style="height:120px;" id="logo">
                 <span class="infotext" id="info-popup">
                     <h3>What is ScreenAssist?</h3>
                     <p>This website is designed to provide reminders and suggestions for screen breaks to ensure optimal health and productivity. For every hour on a screen, it is recommended to take a 5 minute break (at a minimum), and it is most beneficial to get up and moving around. Prolonged screen use can lead to eye strain, fatigue, headaches, and temporary short sightedness, in addition to other possible longer term symptoms, and taking breaks using this tool can help prevent these issues.</p>
@@ -182,7 +198,7 @@
         <script>
             setInterval(GetDate, 1000);
         </script>
-        <div class="jumbotron" style="background-color: #17A2B8;">
+        <div class="jumbotron">
             <a onclick="infoFunction()"><img src="images/questionMark.png" alt="More Info" style="height: 72px;"></a>
         </div>
     </nav>
